@@ -1,0 +1,12 @@
+# Single-stage: dùng image Node.js đầy đủ (Debian) để vừa cài vừa chạy
+FROM node:18
+
+WORKDIR /app
+ENV PORT=3000
+
+# Copy toàn bộ mã nguồn rồi cài toàn bộ dependency (kể cả devDependencies)
+COPY . .
+RUN npm install
+
+EXPOSE 3000
+CMD ["node", "server.js"]
